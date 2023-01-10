@@ -116,7 +116,8 @@
             </div>
             {% for bien in biens  %}
             <div class="img-box">
-              <img src="uploads/images/{{asset('bien.image')}} " alt="">
+          
+              <img src="/uploads/images/{{bien.getImage}}" alt="">
             </div>
             <div class="detail-box">
               <h6 class="price">
@@ -131,21 +132,7 @@
         </div>
         {% endfor %}
         
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="{{asset('images/slider-img.png')}}" alt="">
-            </div>
-            <div class="detail-box">
-              <h6 class="price">
-                $100
-              </h6>
-              <h6>
-                Chair
-              </h6>
-            </div>
-          </a>
-        </div>
+        
       </div>
       <a href="" class="brand-btn">
         See More
