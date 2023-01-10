@@ -11,3 +11,6 @@ app_login:
 app_logout:
     path: /
     controller: App\Controller\SecurityController::logout
+categorie:
+    path: categorie/{id}
+    controller: App\Controller\CategorieController::index

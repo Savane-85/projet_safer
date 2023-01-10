@@ -6,6 +6,8 @@ use App\Entity\Biens;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 /**
  * @extends ServiceEntityRepository<Biens>
  *
@@ -42,17 +44,30 @@ class BiensRepository extends ServiceEntityRepository
 //    /**
 //     * @return Biens[] Returns an array of Biens objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   public function findByExampleField()
+   {
+       // Récupération du gestionnaire d'entités
+$em = $this->getDoctrine()->getManager();
+
+// Création du QueryBuilder
+$queryBuilder = $em->createQueryBuilder();
+
+// Construction de la requête
+$queryBuilder
+    ->select('e')
+    ->from('App:Bien', 'e')
+    ->setMaxResults(3);
+
+// Exécution de la requête et récupération du résultat
+$result = $queryBuilder->getQuery()->getResult();
+
+// Mélange du résultat avec la fonction shuffle de PHP
+shuffle($result);
+
+// Récupération des 3 premiers éléments du tableau mélangé
+$randomEntities = array_slice($result, 0, 3);
+        return $randomEntities;
+   }
 
 //    public function findOneBySomeField($value): ?Biens
 //    {
