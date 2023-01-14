@@ -14,3 +14,9 @@ app_logout:
 categorie:
     path: categorie/{id}
     controller: App\Controller\CategorieController::index
+favoris:
+    path: favoris/{id}
+    controller: App\Controller\AccueilController::favoris
+envoi:
+    path: envoi/{id}
+    controller: App\Controller\AccueilController::envoi
